@@ -664,3 +664,19 @@ address {
         min-width: 120px;
     }
 }
+.pagination__list{
+    & li {
+        font-weight: lighter;
+        list-style: none;
+        padding: 5px 0;
+        &:hover{
+            font-weight: bolder;
+        }
+    }
+    & ul li:nth-child(odd){
+        background-color: var(--card-color);
+    }
+    & ul li:nth-child(even){
+        background-color: var(--mdg-lg-color);
+    }
+}

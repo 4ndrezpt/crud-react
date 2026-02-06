@@ -10,25 +10,25 @@ export const DetailUser = () => {
   const [value, setValue] = useState();
 
   const [isLoading, setIsLoading] = useState(true);
+  const [userEmail, setUserEmail] = useState(emailParam)
   //console.log(location);
 
-  const handleChange = (event)=> {
-    const param = emailParam;
-    setValue(event.target.value);
+  const handleChange = ({ target })=> {
+    setUserEmail(target.value);
   }
 
   const getUser = (value)=> {
     axios.get(`/backender/react-php/user/details/?email=${value}`)
     .then((response)=>{
-      //console.log(response.data);
+      console.log(response.data);
       setUserDetails(response.data);
     }).catch(err => {
       console.error(err);
     })
   }
   useEffect(() => {
-    getUser(emailParam);
-  }, [])
+    getUser(userEmail);
+  }, [userEmail])
 
   return (
     <div className="card__container__unique">
@@ -38,9 +38,10 @@ export const DetailUser = () => {
       <div className="search">
         <input type="text"
         onChange={handleChange}
-        value={ !emailParam ? "cargando" : emailParam }
+        value={userEmail}
+        //value={ !emailParam ? "cargando" : emailParam }
         />
-        <button
+        <button onClick={getUser}
         >Search By Email</button>
       </div>
       <div className="card">

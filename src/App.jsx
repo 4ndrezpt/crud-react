@@ -13,7 +13,6 @@ import { DetailUser } from './components/DetailUser';
 import { EditUser } from "./components/EditUser";
 
 
-
 export const App = ()=> {
   const localValue = window.matchMedia("prefers-color-scheme: dark").matches;
   const [isDark, setIsDark] = useLocalStorage("isDark",false);
